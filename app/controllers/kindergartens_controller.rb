@@ -1,4 +1,5 @@
 class KindergartensController < ApplicationController
+  before_action :authenticate_user!, except: :index
   before_action :set_kindergarten, only: %i[ show edit update destroy ]
 
   # GET /kindergartens or /kindergartens.json
@@ -14,7 +15,8 @@ class KindergartensController < ApplicationController
   def new
     @kindergarten = Kindergarten.new
     @cities = City.all
-  end
+    @pets = Pet.all
+end
 
   # GET /kindergartens/1/edit
   def edit
@@ -62,10 +64,12 @@ class KindergartensController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_kindergarten
       @kindergarten = Kindergarten.find(params[:id])
+      @cities = City.all
+      @pets = Pet.all
     end
 
     # Only allow a list of trusted parameters through.
     def kindergarten_params
-      params.require(:kindergarten).permit(:name, :description, :price, :phone, :email, :available, :city_id, :user_id, :photo)
+      params.require(:kindergarten).permit(:name, :description, :price, :phone, :email, :available, :city_id, :user_id, :photo, pet_ids: [])
     end
 end

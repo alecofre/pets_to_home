@@ -27,18 +27,32 @@
   </div>
 
   <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price %>
+    <%= form.label :pets, style: "display: block" %>
+    <%= form.collection_check_boxes :pet_ids, @pets, :id, :name %>
   </div>
 
-  <div>
-    <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+  <div class='row'>
+    <div class='col-6'>
+      <%= form.label :city_id, style: "display: block" %>
+      <%= form.collection_select :city_id, @cities, :id, :name %>
+    </div>
+
+    <div class='col-6'>
+      <%= form.label :price, style: "display: block" %>
+      <%= form.number_field :price %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class='row'>
+    <div class='col-6'>
+      <%= form.label :phone, style: "display: block" %>
+      <%= form.text_field :phone %>
+    </div>
+
+    <div class='col-6'>
+      <%= form.label :email, style: "display: block" %>
+      <%= form.text_field :email %>
+    </div>
   </div>
 
   <div>
@@ -47,13 +61,7 @@
   </div>
 
   <div>
-    <%= form.label :city_id, style: "display: block" %>
-    <%= form.collection_select :city_id, @cities, :id, :name %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id, value:current_user.id.to_i %>
   </div>
 
   <div>

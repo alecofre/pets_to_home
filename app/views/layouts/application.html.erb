@@ -11,11 +11,15 @@
   </head>
 
   <body>
-    <%= render 'shared/header' %>
+    <div class='container'>
+      <%= render 'shared/header' %>
+    </div>
 
     <p class="notice" style="color: green"><%= notice %></p>
     <p class="alert" style="color: red"><%= alert %></p>
 
-    <%= yield %>
+    <div class='container'>
+      <%= yield %>
+    </div>
   </body>
 </html>

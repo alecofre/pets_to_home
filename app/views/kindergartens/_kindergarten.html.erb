@@ -1,42 +1,73 @@
 <div id="<%= dom_id kindergarten %>">
-  <p>
-    <strong>Name:</strong>
-    <%= kindergarten.name %>
-  </p>
+  <div class='card'>
+    <div class='card-header'>
+      <p>
+        <% if kindergarten.photo.attached? %>
+          <%= image_tag kindergarten.photo, class: "photo-kindergarten" %>
+        <% end %>
+      </p>
+    </div>
 
-  <p>
-    <strong>Description:</strong>
-    <%= kindergarten.description %>
-  </p>
+    <div class='card-body'>
+      <p class='text-bold'>
+        <strong><%= kindergarten.name %></strong>
+      </p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= kindergarten.price %>
-  </p>
+      <p>
+        <%= kindergarten.description %>
+      </p>
 
-  <p>
-    <strong>Phone:</strong>
-    <%= kindergarten.phone %>
-  </p>
+      <p>
+        <strong>Disponible en la ciudad de: </strong><%= kindergarten.city.name %>
+      </p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= kindergarten.email %>
-  </p>
+      <p>
+        <strong>Aceptamos las siguientes mascotas: </strong>
+        <%= kindergarten.pets.each do |pet| %>
+          <span>
+            <%= pet.name %>
+          </span>
+          <span>
+            , 
+          </span>
+        <% end %>
+      </p>
+      
+      <div class='row'>
+      <p class='col-6'>
+        <strong>Llámanos al: </strong>
+        <%= kindergarten.phone %>
+      </p>
 
-  <p>
-    <strong>Available:</strong>
-    <%= kindergarten.available %>
-  </p>
+      <p class='col-6'>
+        <strong>Contáctanos en: </strong>
+        <%= kindergarten.email %>
+      </p>
+      </div>
 
-  <p>
-    <strong>City:</strong>
-    <%= kindergarten.city_id %>
-  </p>
+      <p>
+        <strong>DISPONIBLE:</strong>
+          <% if kindergarten.available %>
+            <span>
+              SI
+            </span>
+          <% else %>
+            <span>
+              NO
+            </span>
+          <% end %>
+      </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= kindergarten.user_id %>
-  </p>
+      <p class='text-success'>
+        <strong>
+        $
+        <span>
+          <%= kindergarten.price %>
+        </span>
+        </strong>
+      </p>
+
+  </div>
+  </div>
 
 </div>

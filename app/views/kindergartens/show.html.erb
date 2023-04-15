@@ -3,8 +3,12 @@
 <%= render @kindergarten %>
 
 <div>
-  <%= link_to "Edit this kindergarten", edit_kindergarten_path(@kindergarten) %> |
+  <% if current_user.id == @kindergarten.user_id %>
+    <%= link_to "Edit this kindergarten", edit_kindergarten_path(@kindergarten) %> |
+  <% end %>
   <%= link_to "Back to kindergartens", kindergartens_path %>
 
-  <%= button_to "Destroy this kindergarten", @kindergarten, method: :delete %>
+  <% if current_user.id == @kindergarten.user_id %>
+    <%= button_to "Destroy this kindergarten", @kindergarten, method: :delete %>
+  <% end %>
 </div>
