@@ -4,7 +4,8 @@ class KindergartensController < ApplicationController
 
   # GET /kindergartens or /kindergartens.json
   def index
-    @kindergartens = Kindergarten.all
+    @kindergartens = Kindergarten.all.page(params[:page])
+    # @kindergartens = Kindergarten.buscar(params[:buscar]).page(params[:page])
   end
 
   # GET /kindergartens/1 or /kindergartens/1.json

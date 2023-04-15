@@ -1,7 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Kindergartens</h1>
 
+<div class='row'>
+<div class='col-4'>
+<%= form_with url: kindergartens_path, method: :get do |k| %>
+  <%= k.label :"Buscar en" %>
+  <%= k.collection_select :city_id, City.all, :id, :name %>
+  <%= k.submit "FILTRAR" %>
+<% end %>
+</div>
+
+<div class='col-4'>
+<%= form_with url: kindergartens_path, method: :get do |k| %>
+  <%= k.label :"Buscar para" %>
+  <%= k.collection_select :pets_id, Pet.all, :id, :name %>
+  <%= k.submit "FILTRAR" %>
+<% end %>
+</div>
+</div>
+
+<h1>Kindergartens</h1>
 <div id="kindergartens">
   <% @kindergartens.each do |kindergarten| %>
     <%= render kindergarten %>
@@ -10,5 +28,7 @@
     </p>
   <% end %>
 </div>
+
+<%= paginate @kindergartens %>
 
 <%= link_to "New kindergarten", new_kindergarten_path %>
