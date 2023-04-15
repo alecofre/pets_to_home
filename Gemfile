@@ -62,6 +62,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Se agrega la gema para generar BBDD inicial
+  gem "faker"
 end
 
 group :test do
@@ -70,3 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "devise"
+gem "bootstrap"
+gem "kaminari"
