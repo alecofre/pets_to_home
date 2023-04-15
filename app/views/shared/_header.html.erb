@@ -1,0 +1,33 @@
+<div class='row'>
+    <div class='col-sm-1'>
+        <%= link_to "HOME", root_path %>
+    </div>
+    <div class='col-sm-3'>
+        <% if user_signed_in? %>
+            <h3>
+                <%= link_to "NEW CITY", new_city_path %>
+            </h3>
+        <% end %>
+    </div>
+    <div class='col-sm-3'>
+        <% if user_signed_in? %>
+            <h4>
+                Bienvenido, <%= current_user.try(:name) %>
+            </h4>
+        <% else %>
+            <h4>
+                Bienvenido, invitado!!
+            </h4>
+        <% end %>
+    </div>
+    <div class='col-sm-1'>
+        <% if user_signed_in? %>
+            <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}  %>
+        <% else %>
+            <%= link_to "Inicia Sesion", new_user_session_path %>
+        <% end %>
+    </div>
+    <div class='col-sm-1'>
+        <%= link_to "Registrate", new_user_registration_path %>
+    </div>
+</div>
