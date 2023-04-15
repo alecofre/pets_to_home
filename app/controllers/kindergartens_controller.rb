@@ -13,6 +13,7 @@ class KindergartensController < ApplicationController
   # GET /kindergartens/new
   def new
     @kindergarten = Kindergarten.new
+    @cities = City.all
   end
 
   # GET /kindergartens/1/edit
