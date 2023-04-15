@@ -65,6 +65,6 @@ class KindergartensController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kindergarten_params
-      params.require(:kindergarten).permit(:name, :description, :price, :phone, :email, :available, :city_id, :user_id)
+      params.require(:kindergarten).permit(:name, :description, :price, :phone, :email, :available, :city_id, :user_id, :photo)
     end
 end
